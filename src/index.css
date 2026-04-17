@@ -1,0 +1,155 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --fintech-primary: #4f46e5;
+    --fintech-secondary: #7c3aed;
+    --fintech-tertiary: #a855f7;
+    --fintech-accent: #f59e0b;
+    --fintech-growth: #10b981;
+    --fintech-danger: #ef4444;
+    --color-brand-blue: 30 41 59;
+    --color-brand-background: 248 250 252;
+    --color-brand-card: 255 255 255;
+  }
+
+  .dark {
+    --color-brand-blue: 241 245 249;
+    --color-brand-background: 15 23 42;
+    --color-brand-card: 30 41 59;
+  }
+
+  body {
+    @apply bg-brand-background text-brand-blue font-sans;
+    background-image: radial-gradient(circle at 12% 10%, rgba(79, 70, 229, 0.18), transparent 36%),
+      radial-gradient(circle at 85% 14%, rgba(245, 158, 11, 0.12), transparent 30%);
+  }
+
+  .dark body {
+    background-image: radial-gradient(circle at 14% 12%, rgba(124, 58, 237, 0.24), transparent 34%),
+      radial-gradient(circle at 84% 18%, rgba(16, 185, 129, 0.12), transparent 30%);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display tracking-tight text-brand-blue;
+  }
+}
+
+@layer components {
+  .gradient-hero {
+    background-image: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #a855f7 100%);
+  }
+
+  .btn-hero-primary {
+    @apply inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold text-white bg-gradient-to-r from-[#6366F1] via-[#7C3AED] to-[#A855F7] shadow-[0_20px_36px_-16px_rgba(99,102,241,0.88)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_24px_42px_-14px_rgba(168,85,247,0.9)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C4B5FD] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent;
+  }
+
+  .btn-hero-secondary {
+    @apply inline-flex items-center justify-center rounded-full border border-white/70 bg-white/5 px-6 py-3 text-sm font-semibold text-white shadow-[0_14px_28px_-16px_rgba(15,23,42,0.6)] backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/10 hover:shadow-[0_20px_32px_-14px_rgba(255,255,255,0.45)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold text-white bg-gradient-to-r from-[#6366F1] via-[#7C3AED] to-[#A855F7] shadow-[0_16px_30px_-16px_rgba(99,102,241,0.86)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_20px_34px_-14px_rgba(168,85,247,0.86)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A855F7]/70 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60 dark:shadow-[0_18px_32px_-16px_rgba(168,85,247,0.5)];
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-full border border-primary-purple/25 bg-white/95 px-6 py-3 text-sm font-semibold text-primary-purple shadow-[0_10px_22px_-16px_rgba(30,41,59,0.6)] transition-all duration-300 hover:-translate-y-0.5 hover:border-primary-purple/40 hover:bg-primary-purple/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-pink/40 focus-visible:ring-offset-2 dark:border-primary-violet/45 dark:bg-[#1E293B] dark:text-[#F1F5F9] dark:hover:bg-primary-violet/10;
+  }
+
+  .surface-card {
+    @apply relative overflow-hidden rounded-[16px] border border-primary-purple/15 bg-[rgb(var(--color-brand-card))] shadow-[0_14px_26px_-18px_rgba(15,23,42,0.45)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_36px_-18px_rgba(79,70,229,0.46)] dark:border-primary-violet/30 dark:bg-[#1E293B] dark:shadow-[0_22px_36px_-22px_rgba(2,6,23,0.85)];
+  }
+
+  .surface-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(circle at 85% 0%, rgba(168, 85, 247, 0.16), transparent 48%);
+  }
+
+  .dark .surface-card::after {
+    background: radial-gradient(circle at 85% 0%, rgba(196, 181, 253, 0.18), transparent 52%);
+  }
+
+  .fin-card {
+    @apply surface-card;
+  }
+
+  .surface-panel {
+    @apply relative overflow-hidden rounded-3xl border border-primary-purple/20 bg-white/95 shadow-[0_20px_46px_-28px_rgba(79,70,229,0.45)] dark:border-primary-violet/35 dark:bg-[#1E293B] dark:shadow-[0_22px_42px_-24px_rgba(2,6,23,0.82)];
+  }
+
+  .surface-panel::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(150deg, rgba(124, 58, 237, 0.12), transparent 45%);
+  }
+
+  .fin-glow {
+    box-shadow: 0 30px 70px -34px rgba(79, 70, 229, 0.7);
+  }
+
+  .eyebrow {
+    @apply text-[11px] font-semibold uppercase tracking-[0.16em] text-primary-purple;
+  }
+
+  .input-field {
+    @apply w-full rounded-xl border border-primary-purple/20 bg-white px-3 py-2 text-sm text-brand-blue placeholder:text-brand-blue/45 focus:outline-none focus:ring-2 focus:ring-primary-pink/45 dark:border-primary-violet/35 dark:bg-slate-900 dark:text-slate-100 dark:placeholder:text-slate-400;
+  }
+
+  .section-shell {
+    @apply py-14 md:py-20;
+  }
+}
+/* Hide Google translate top banner */
+.goog-te-banner-frame.skiptranslate {
+  display: none !important;
+}
+
+.goog-te-banner-frame {
+  display: none !important;
+}
+
+iframe.goog-te-banner-frame {
+  display: none !important;
+}
+
+/* Remove body shift caused by google translate */
+body {
+  top: 0px !important;
+}
+
+/* Hide Google branding */
+.goog-logo-link {
+  display: none !important;
+}
+
+.goog-te-gadget {
+  font-size: 0px !important;
+}
+
+/* Hide tooltip popup */
+.goog-te-balloon-frame {
+  display: none !important;
+}
+
+.goog-text-highlight {
+  background: none !important;
+  box-shadow: none !important;
+}
+
+/* Prevent translate bar space */
+body > .skiptranslate {
+  display: none !important;
+}
+

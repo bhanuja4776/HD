@@ -1,0 +1,31 @@
+{
+  "name": "aarvika-server",
+  "version": "1.0.0",
+  "private": true,
+  "type": "commonjs",
+  "main": "ragServer.js",
+  "scripts": {
+    "start": "node ragServer.js",
+    "dev": "nodemon ragServer.js",
+    "ingest": "node ingest.js",
+    "audit": "npm audit --audit-level=moderate",
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "dependencies": {
+    "axios": "^1.13.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.6.1",
+    "express": "^4.22.1",
+    "mongodb": "^6.21.0",
+    "mongoose": "^9.4.1"
+  },
+  "devDependencies": {
+    "jest": "^30.2.0",
+    "nodemon": "^3.1.7",
+    "supertest": "^7.1.4"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  }
+}
