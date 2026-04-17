@@ -21,5 +21,33 @@ pipeline {
                 '''
             }
         }
+
+        stage('Release') {
+            when {
+                branch 'main'
+            }
+            steps {
+                bat '''
+                setlocal enabledelayedexpansion
+
+                for /f %%i in ('powershell -NoProfile -Command "(Get-Date).ToString('yyyyMMddHHmmss')"') do set RELEASE_VERSION=v1.0.%%i
+                echo Releasing version !RELEASE_VERSION!
+
+                git fetch --tags
+                git rev-parse "!RELEASE_VERSION!" >nul 2>nul && (
+                  echo Tag !RELEASE_VERSION! already exists. Skipping tag creation.
+                ) || (
+                  git tag "!RELEASE_VERSION!"
+                  git push origin "!RELEASE_VERSION!"
+                )
+
+                docker compose down --remove-orphans
+                docker compose up -d --remove-orphans
+                docker compose ps
+
+                endlocal
+                '''
+            }
+        }
     }
 }
