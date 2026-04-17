@@ -1,5 +1,5 @@
 const request = require("supertest");
-const { app } = require("../ragServer");
+const app = require("../ragServer");
 
 describe("GET /health", () => {
 	it('returns 200 and { status: "OK" }', async () => {

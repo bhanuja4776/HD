@@ -540,9 +540,4 @@ if (require.main === module) {
 	});
 }
 
-module.exports = {
-	app,
-	getEmbedding,
-	vectorSearch,
-	generateAnswer,
-};
+module.exports = app;
